@@ -19,13 +19,13 @@ class WordPressController extends Controller
         try {
 
             // Crea un nuevo cliente Guzzle con la URL base de la API REST de WordPress
-            $client = new Client(['base_uri' => 'https://exemple.com/wp-json/wp/v2/']);
+            $client = new Client(['base_uri' => 'http://wordpress.com/wp-json/']);
 
             // Utiliza la biblioteca Guzzle para hacer una petición POST a la API REST de WordPress para crear una entrada de blog
             $response = $client->post('posts', [
 
                 // Autenticación básica de WordPress: usuario y contraseña
-                'auth' => ['usuari', 'contrasenya'], 
+                'auth' => ['usuari', 'contrasenya'],
                 'form_params' => [
                     'title' => $titol, // El título de la entrada del blog
                     'content' => $contingut, // El contenido de la entrada del blog
@@ -40,5 +40,5 @@ class WordPressController extends Controller
             return "Error al crear la entrada de blog: " . $e->getMessage();
         }
     }
-    
+
 }
